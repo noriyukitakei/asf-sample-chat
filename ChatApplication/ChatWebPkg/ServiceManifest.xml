@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ServiceManifest Name="ChatWebPkg" Version="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Description>Service that implements a ChatWeb service</Description>
+  <ServiceTypes>
+    <StatelessServiceType ServiceTypeName="ChatWebType" />
+  </ServiceTypes>
+  <CodePackage Name="Code" Version="1.0.0">
+    <EntryPoint>
+      <ExeHost>
+        <Program>entryPoint.sh</Program>
+        <ConsoleRedirection FileRetentionCount="5" FileMaxSizeInKb="2048"/>
+      </ExeHost>
+    </EntryPoint>
+  </CodePackage>
+  <ConfigPackage Name="Config" Version="1.0.0" />
+  <DataPackage Name="Data" Version="1.0.0" />
+  <Resources>
+    <Endpoints>
+      <!-- This endpoint is used by the communication listener to obtain the port on which to 
+           listen. Please note that if your service is partitioned, this port is shared with 
+           replicas of different partitions that are placed in your code. -->
+        <Endpoint Name="WebEndpoint" Protocol="http" Port="8080" />
+    </Endpoints>
+  </Resources>
+ </ServiceManifest>
